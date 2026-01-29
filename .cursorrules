@@ -164,3 +164,45 @@ style(ui): improve game board animations
 - ❌ Коммитить .env файл
 - ❌ Оставлять console.log в продакшн коде
 - ❌ Игнорировать ошибки линтера
+# Git Commit Rules
+
+When making commits:
+1. Always start commit message with timestamp in format: YYMMDD hhmm (year-month-day hour-minute)
+2. After timestamp, write clear description of what was changed
+3. Use format: "YYMMDD hhmm: [clear description of changes]"
+4. Be specific about what files/features were modified
+
+Examples:
+- "250128 1430: Added user authentication to login page"
+- "250128 1445: Fixed bug in payment processing function"
+- "250128 1500: Updated API endpoints for user profile"
+
+# Pull Request Rules
+
+When creating pull requests:
+1. Title should be clear and descriptive
+2. Include detailed changelog in PR description
+3. Changelog must list:
+   - All modified files
+   - Specific changes made to each file
+   - Reason for each change
+   - Any breaking changes or important notes
+
+PR Description Template:
+```
+## Changelog
+
+### Modified Files:
+- `file1.py`: Added new function for data validation
+- `file2.js`: Fixed async/await handling in API calls
+- `config.json`: Updated database connection settings
+
+### Changes:
+1. **Feature**: Description of new feature
+2. **Fix**: Description of bug fix
+3. **Refactor**: Description of code improvements
+
+### Notes:
+- Any breaking changes
+- Migration steps if needed
+```
