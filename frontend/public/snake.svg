@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="snakeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ade80;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22c55e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Snake body -->
+  <circle cx="50" cy="50" r="40" fill="url(#snakeGrad)"/>
+  <!-- Eyes -->
+  <circle cx="35" cy="40" r="8" fill="white"/>
+  <circle cx="65" cy="40" r="8" fill="white"/>
+  <circle cx="37" cy="42" r="4" fill="#1a1a2e"/>
+  <circle cx="67" cy="42" r="4" fill="#1a1a2e"/>
+  <!-- Tongue -->
+  <path d="M50 65 L45 80 M50 65 L55 80" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+</svg>

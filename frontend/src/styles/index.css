@@ -1,0 +1,243 @@
+/* ==============================================================================
+   🐍 Snake Game — Global Styles
+   ==============================================================================
+   
+   Цветовая схема: Киберпанк/Неон на тёмном фоне
+   - Основной цвет змейки: зелёный (#4ade80)
+   - Еда: красный (#ef4444)
+   - Фон: тёмно-синий (#0f0f23)
+   - Акценты: неоновый голубой (#06b6d4)
+*/
+
+/* === CSS Variables === */
+:root {
+  /* Цвета */
+  --color-bg-dark: #0f0f23;
+  --color-bg-medium: #1a1a2e;
+  --color-bg-light: #16213e;
+  
+  --color-snake-head: #4ade80;
+  --color-snake-body: #22c55e;
+  --color-snake-tail: #16a34a;
+  
+  --color-food: #ef4444;
+  --color-food-glow: #f87171;
+  
+  --color-accent: #06b6d4;
+  --color-accent-light: #22d3ee;
+  
+  --color-gold: #fbbf24;
+  --color-silver: #9ca3af;
+  --color-bronze: #f97316;
+  
+  --color-text: #e2e8f0;
+  --color-text-muted: #94a3b8;
+  
+  /* Шрифты */
+  --font-pixel: 'Press Start 2P', cursive;
+  --font-modern: 'Orbitron', sans-serif;
+  
+  /* Размеры */
+  --game-size: min(80vw, 80vh, 600px);
+  --cell-size: calc(var(--game-size) / 20);
+  
+  /* Анимации */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+}
+
+/* === Reset & Base === */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-modern);
+  background: var(--color-bg-dark);
+  color: var(--color-text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  
+  /* Animated background */
+  background: 
+    radial-gradient(ellipse at 20% 80%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(74, 222, 128, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(239, 68, 68, 0.05) 0%, transparent 50%),
+    var(--color-bg-dark);
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === Typography === */
+h1, h2, h3 {
+  font-family: var(--font-modern);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.pixel-text {
+  font-family: var(--font-pixel);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+/* === Buttons === */
+.btn {
+  font-family: var(--font-modern);
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left var(--transition-normal);
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-snake-head), var(--color-snake-body));
+  color: var(--color-bg-dark);
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(74, 222, 128, 0.5);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+}
+
+.btn-secondary:hover {
+  background: var(--color-accent);
+  color: var(--color-bg-dark);
+}
+
+/* === Animations === */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px currentColor; }
+  50% { box-shadow: 0 0 20px currentColor, 0 0 30px currentColor; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes rainbow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+.animate-glow {
+  animation: glow 2s infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* === Utility Classes === */
+.text-center { text-align: center; }
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-snake-head), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.neon-text {
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 20px currentColor;
+}
+
+/* === Scrollbar === */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-medium);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-light);
+}
+
+/* === Selection === */
+::selection {
+  background: var(--color-snake-head);
+  color: var(--color-bg-dark);
+}
