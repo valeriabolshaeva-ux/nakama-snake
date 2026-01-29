@@ -68,8 +68,8 @@ app.add_middleware(
         "http://localhost:3000",  # На всякий случай
         "http://127.0.0.1:5173",
         "http://127.0.0.1:3000",
-        "http://localhost",       # Docker (nginx на порту 80)
-        "http://localhost:80",    # Docker explicit
+        "http://localhost:8201",  # Docker frontend
+        "http://localhost:8200",  # Docker backend
         "http://frontend",        # Docker internal
     ],
     allow_credentials=True,

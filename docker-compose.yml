@@ -17,7 +17,7 @@ services:
     container_name: snake-backend
     restart: unless-stopped
     ports:
-      - "8000:8000"
+      - "8200:8000"
     volumes:
       # Persist SQLite database
       - snake_data:/app/data
@@ -42,7 +42,7 @@ services:
     container_name: snake-frontend
     restart: unless-stopped
     ports:
-      - "80:80"
+      - "8201:80"
     depends_on:
       backend:
         condition: service_healthy
